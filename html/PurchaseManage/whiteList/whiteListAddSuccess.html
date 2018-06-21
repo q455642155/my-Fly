@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<!-- saved from url=(0033)http://10.132.162.33/2/Home/Index -->
+<html class=" js flexbox flexboxlegacy canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="description" content="ECS - 费用管控平台">
+    <meta name="author" content="Coderthemes">
+    <link rel="shortcut icon" href="../../../assets/images/favicon.ico">
+    <title>ECS-白名单申请</title>
+    <link href="../../../plugins/switchery/switchery.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../plugins/morris/morris.css">
+    <link href="../../../assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="../../../assets/css/icons.css" rel="stylesheet" type="text/css">
+    <link href="../../../assets/css/style.css" rel="stylesheet" type="text/css">
+    <link href="../../../assets/css/whiteList.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="../../../plugins/step/iF.step.css">
+    <script src="../../../assets/js/lib/modernizr.min.js"></script>
+    <script src="../../../assets/js/lib/jquery.min.js"></script>
+    <style type="text/css" id="notify-metro">
+    .notifyjs-metro-default {
+      color: #ffffff !important;
+      background-color: #3f51b5;
+      border: 1px solid #3f51b5;
+    }
+    .notifyjs-metro-error {
+      color: #ffffff !important;
+      background-color: #ee6e73;
+      border: 1px solid #ee6e73;
+    }
+    .notifyjs-metro-custom {
+      color: #ffffff !important;
+      background-color: #3f51b5;
+      border: 1px solid #3f51b5;
+    }
+    .notifyjs-metro-success {
+      color: #ffffff !important;
+      background-color: #66bb6a;
+      border: 1px solid #66bb6a;
+    }
+    .notifyjs-metro-info {
+      color: #ffffff !important;
+      background-color: #29b6f6;
+      border: 1px solid #29b6f6;
+    }
+    .notifyjs-metro-warning {
+      color: #ffffff !important;
+      background-color: #ffc107;
+      border: 1px solid #ffc107;
+    }
+    .notifyjs-metro-black {
+      color: #ffffff !important;
+      background-color: #4c5667;
+      border: 1px solid #4c5667;
+    }
+    .notifyjs-metro-white {
+      background-color: #ffffff;
+      border: 1px solid #ddd;
+    }
+    </style>
+    <style type="text/css" id="core-notify">
+    .notifyjs-corner {
+      position: fixed;
+      margin: 5px;
+      z-index: 1050;
+    }
+
+    .notifyjs-corner .notifyjs-wrapper,
+    .notifyjs-corner .notifyjs-container {
+      position: relative;
+      display: block;
+      height: inherit;
+      width: inherit;
+      margin: 3px;
+    }
+
+    .notifyjs-wrapper {
+      z-index: 1;
+      position: absolute;
+      display: inline-block;
+      height: 0;
+      width: 0;
+    }
+
+    .notifyjs-container {
+      display: none;
+      z-index: 1;
+      position: absolute;
+    }
+
+    .notifyjs-hidable {
+      cursor: pointer;
+    }
+
+    [data-notify-text],[data-notify-html] {
+      position: relative;
+    }
+
+    .notifyjs-arrow {
+      position: absolute;
+      z-index: 2;
+      width: 0;
+      height: 0;
+    }
+    </style>
+</head>
+<body class="widescreen">
+
+    <!-- Navigation Bar-->
+    <header id="topnav">
+        <!--Top-->
+        <div class="topbar-main">
+            <div class="container-fluid">
+                <!-- Logo container-->
+                <div class="logo">
+                    <!-- Text Logo -->
+                    <a href="http://10.132.162.33/2/Home/Index" class="logo"><i class="mdi mdi-radar"></i> <span>ECS 费用管控平台</span></a>
+                </div>
+                <!-- End Logo container-->
+
+                <div class="menu-extras topbar-custom">
+                    <ul class="list-inline float-right mb-0">
+                        <li class="list-inline-item notification-list hide-phone">
+                            <a class="nav-link waves-light waves-effect" href="http://10.132.162.33/2/">
+                                登录
+                            </a>
+                        </li>
+                        <li class="list-inline-item notification-list hide-phone">
+                            <a class="nav-link waves-light waves-effect" href="http://10.132.162.33/2/Account/Register">
+                                注册
+                            </a>
+                        </li>
+                        <li class="list-inline-item notification-list hide-phone">
+                            <a class="nav-link waves-light waves-effect" href="http://10.132.162.33/2/Home/Index#" id="btn-fullscreen">
+                                <i class="mdi mdi-crop-free noti-icon"></i>
+                            </a>
+                        </li>
+                        <li class="list-inline-item dropdown notification-list">
+                            <a class="nav-link dropdown-toggle arrow-none waves-light waves-effect" data-toggle="dropdown" href="http://10.132.162.33/2/Home/Index#" role="button" aria-haspopup="false" aria-expanded="false">
+                                <i class="mdi mdi-bell-ring noti-icon"></i>
+                                <span class="badge badge-pink noti-icon-badge">50</span>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right dropdown-arrow dropdown-menu-lg" aria-labelledby="Preview" style="width:350px">
+                                <!-- item-->
+                                <div class="dropdown-item noti-title">
+                                    <h5 class="font-16"><b>代办列表</b></h5>
+                                </div>
+                                <!-- item-->
+                                <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                    <div class="notify-icon bg-success">
+                                        <i class="fa fa-clock-o"></i>
+                                    </div>
+                                    <span class="badge badge-success float-right">33</span>
+                                    <p class="notify-details">未送签订单<small class="text-muted">2018-01-01</small></p>
+                                </a>
+                                <!-- item-->
+                                <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                    <div class="notify-icon bg-primary">
+                                        <i class="fa fa-check-square-o"></i>
+                                    </div>
+                                    <span class="badge badge-primary float-right">15</span>
+                                    <p class="notify-details">已提交未送签订单<small class="text-muted">2018-01-01</small></p>
+                                </a>
+                                <!-- item-->
+                                <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                    <div class="notify-icon bg-danger">
+                                        <i class="fa fa-exclamation"></i>
+                                    </div>
+                                    <span class="badge badge-danger float-right">2</span>
+                                    <p class="notify-details">未转采购之请购单<small class="text-muted">2018-01-01</small></p>
+                                </a>
+                            </div>
+                        </li>
+                        <li class="list-inline-item dropdown notification-list">
+                            <a class="nav-link dropdown-toggle waves-effect nav-user" data-toggle="dropdown" href="http://10.132.162.33/2/Home/Index#" role="button" aria-haspopup="false" aria-expanded="false">
+                                <img src="../../../assets/images/avatar-1.jpg" alt="user" class="rounded-circle">
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right profile-dropdown " aria-labelledby="Preview">
+                                <!-- item-->
+                                <div class="dropdown-item noti-title">
+                                    <h5 class="text-overflow"><small>欢迎您 ! Green</small> </h5>
+                                </div>
+                                <!-- item-->
+                                <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                    <i class="mdi mdi-map"></i> <span>导航</span>
+                                </a>
+                                <!-- item-->
+                                <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                    <i class="mdi mdi-account"></i> <span>个人中心</span>
+                                </a>
+                                <!-- item-->
+                                <a href="http://10.132.162.33/2/" class="dropdown-item notify-item" onclick="$.Notification.notify()">
+                                    <i class="mdi mdi-logout"></i> <span>登出</span>
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <!-- end menu-extras -->
+                <div class="clearfix"></div>
+            </div> <!-- end container -->
+        </div>
+
+        <!--一级导航开始-->
+        <div class="navbar-custom">
+            <div class="container-fluid">
+                <div id="navigation">
+                    <!-- Navigation Menu-->
+                    <ul class="navigation-menu">
+                        <!--销售管理-->
+                        <li class="has-submenu active">
+                            <a href="javascript:void(0);" class="waves-effect waves-primary">
+                                <i class="fa  fa-paper-plane"></i><span>请购管理</span>
+                            </a>
+                            <ul class="submenu">
+                                <li class="active">
+                                    <a href="whiteList.html">白名单申请</a>
+                                </li>            
+                                <li><a href="../feeExpend/feeExpend.html">费用支出呈核</a></li>
+                                <li><a href="../purchaseTask/purchaseTask.html">请购作业</a></li>
+                            </ul>
+                        </li>
+                        <!--采购管理-->
+                        <li class="has-submenu ">
+                            <a href="javascript:void(0);" class="waves-effect waves-primary">
+                                <i class="ti ti-shopping-cart"></i><span>采购管理</span> <span class="menu-arrow"></span>
+                            </a>
+                            <ul class="submenu">
+                                <li><a href="javascript:void(0)">采购任务表</a></li>
+                                <li><a href="javascript:void(0)">采购作业</a></li>
+                                <li><a href="javascript:void(0)">零用金申请作业</a></li>
+                            </ul>
+                        </li>
+                        <!--仓库管理-->
+                        <li class="has-submenu ">
+                            <a href="javascript:void(0);" class="waves-effect waves-primary">
+                                <i class="ti ti-location-pin"></i><span>仓库管理</span> <span class="menu-arrow"></span>
+                            </a>
+                            <ul class="submenu">
+                                <li><a href="javascript:void(0)">入库作业</a></li>
+                                <li><a href="javascript:void(0)">调拨作业</a></li>
+                                <li><a href="javascript:void(0)">出库作业</a></li>
+                            </ul>
+                        </li>
+                        <!--财务管理-->
+                        <li class="has-submenu ">
+                            <a href="javascript:void(0);" class="waves-effect waves-primary">
+                                <i class="fa fa-book"></i><span>财务管理</span> <span class="menu-arrow"></span>
+                            </a>
+                            <ul class="submenu">
+                                <li><a href="javascript:void(0)">销售对账作业</a></li>
+                                <li><a href="javascript:void(0)">采购对账查询</a></li>
+                                <li><a href="javascript:void(0)">采购对账作业</a></li>
+                            </ul>
+                        </li>
+                        <!--报表管理-->
+                        <li class="has-submenu ">
+                            <a href="javascript:void(0);" class="waves-effect waves-primary">
+                                <i class="fa fa-file-excel-o"></i><span>报表管理</span>
+                            </a>
+                            <ul class="submenu">
+                                <li><a href="http://10.132.162.33/2/Home/Error?it=1">销售报表</a></li>
+                                <li><a href="http://10.132.162.33/2/Home/Error?it=2">采购报表</a></li>
+                                <li><a href="http://10.132.162.33/2/Home/Error?it=3">库存报表</a></li>
+                                <li><a href="http://10.132.162.33/2/Home/Error?it=4">损益报表</a></li>
+                            </ul>
+                        </li>
+                        <!--物料管理-->
+                        <li class="has-submenu ">
+                            <a href="javascript:void(0);" class="waves-effect waves-primary">
+                                <i class="fa fa-cubes"></i><span>物料管理</span>
+                            </a>
+                            <ul class="submenu">
+                                <li><a href="http://10.132.162.33/2/Material/Type">物料分类</a></li>
+                                <li><a href="http://10.132.162.33/2/Material/List">物料基本资料</a></li>
+                            </ul>
+                        </li>
+                        <!--基本资料管理-->
+                        <li class="has-submenu ">
+                            <a href="javascript:void(0);" class="waves-effect waves-primary">
+                                <i class="ion ion-settings"></i><span>基本资料管理</span> <span class="menu-arrow"></span>
+                            </a>
+                            <ul class="submenu megamenu">
+                                <li>
+                                    <ul>
+                                        <li><a href="javascript:void(0)">法人</a></li>
+                                        <li><a href="javascript:void(0)">供应商</a></li>
+                                        <li><a href="javascript:void(0)">客户</a></li>
+                                        <li><a href="javascript:void(0)">部门</a></li>
+                                        <li><a href="javascript:void(0)">会计科目</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <ul>
+                                        <li><a href="javascript:void(0)">区域</a></li>
+                                        <li><a href="javascript:void(0)">仓库</a></li>
+                                        <li><a href="javascript:void(0)">付款条件</a></li>
+                                        <li><a href="javascript:void(0)">税别</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <!-- End navigation menu -->
+                </div> <!-- end #navigation -->
+            </div> <!-- end container -->
+        </div> 
+        <!-- 一级导航结束 -->
+    </header>
+    <!-- End Navigation Bar-->
+
+    <div class="wrapper">
+        <div class="container-fluid">
+            <!-- 面包屑导航 -->
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="page-title-box">
+                        <div class="btn-group pull-right">
+                            <ol class="breadcrumb hide-phone p-0 m-0">
+                                <li class="breadcrumb-item"><a href="whiteList.html">请购管理</a></li>
+                                <li class="breadcrumb-item active">白名单申请</li>
+                            </ol>
+                        </div>
+                        <h4 class="page-title">白名单申请</h4>
+                    </div> 
+                </div>
+            </div>
+
+            <!--流程-->
+            <div class="section">
+                <div class="header">
+                    <ol class="ui-step ui-step-blue ui-step-1">
+                        <li class="step-start step-done">
+                            <div class="ui-step-line"></div>
+                            <div class="ui-step-cont">
+                                <span class="ui-step-cont-number ui-step-number-1"></span>
+                                <span class="ui-step-cont-text">审核填写信息</span>
+                            </div>
+                        </li>
+                        <li class="step-end step-active">
+                            <div class="ui-step-line"></div>
+                            <div class="ui-step-cont">
+                                <span class="ui-step-cont-number ui-step-number-2"></span>
+                                <span class="ui-step-cont-text">完成注册</span>
+                            </div>
+                        </li>
+                    </ol>
+                </div>
+                <div class="body">
+                    <form class="select-section" role="form">
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <div class="form-group row">
+                                    <label for="billNum" class="col-sm-4 col-form-label text-right">單號 <span>*</span></label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" id="billNum" placeholder="请输入單據號碼" value="0CEN-180001" disabled>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="form-group row">
+                                    <label for="faperson" class="col-sm-4 col-form-label text-right">法人 <span>*</span></label>
+                                    <div class="col-sm-8">
+                                        <select class="form-control" disabled>
+                                            <option value="000001-鴻富錦外銷(深圳)">000001-鴻富錦外銷(深圳)</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4">
+                                <div class="form-group row">
+                                    <label for="feeCode" class="col-sm-4 col-form-label text-right">费用代码
+                                        <span>*</span>
+
+                                    </label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" id="feeCode" placeholder="" disabled value="DB49">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <div class="form-group row">
+                                    <label for="applyPerson" class="col-sm-4 col-form-label text-right">申請人
+                                        <span>*</span>
+                                    </label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" id="applyPerson" placeholder="请输入申請人" value="测试申请人" disabled>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="form-group row">
+                                    <label for="applyTime" class="col-sm-4 col-form-label text-right">申請时间
+                                        <span>*</span>
+                                    </label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" id="applyTime" placeholder="" value="2018/3/20" disabled>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="form-group row">
+                                    <label for="firstname" class="col-sm-4 col-form-label text-right">单据状态
+                                        <span>*</span>
+
+                                    </label>
+                                    <div class="col-sm-8">
+                                        <select class="form-control" disabled>
+                                            <option value="1-开立">1-开立</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <div class="form-group row">
+                                    <label for="confirmPerson" class="col-sm-4 col-form-label text-right">确认人
+                                        <span>*</span>
+                                    </label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" id="confirmPerson" placeholder="申請人分機" value="鸿富锦" disabled>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="form-group row">
+                                    <label for="confirmTime" class="col-sm-4 col-form-label text-right">确认时间
+                                        <span>*</span>
+                                    </label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" id="confirmTime" placeholder="" value="2018/3/24" disabled>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <div class="form-group row">
+                                    <label for="examPerson" class="col-sm-4 col-form-label text-right">审核人
+                                        <span>*</span>
+                                    </label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" id="examPerson" placeholder="请输入採購部門" value="公司費用" disabled>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="form-group row">
+                                    <label for="examTime" class="col-sm-4 col-form-label text-right">审核日期
+                                        <span>*</span>
+                                    </label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" id="examTime" placeholder="" value="2018/3/27" disabled>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="footer"></div>
+                <div class="operate">
+                    <button type="button" class="btn btn-primary">删除</button>
+                    <button type="button" class="btn btn-primary">确认</button>
+                </div>
+            </div>
+            <div class="table-section" style="background:#fff;padding:10px;margin-top:10px;margin-bottom:80px;">
+                <div class="table-responsive">
+                    <div id="toolbar">
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">新增</button>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal3">EXCEL导入</button>
+                    </div>
+                    <table id="tbody"></table>
+                    <div class="page-footer-section"></div>
+                </div>
+            </div>
+        </div> <!-- end container -->
+    </div>
+    <!-- end wrapper -->
+
+<div id="con-close-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myEditModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">指派销售</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">销售人员名称</div>
+                            </div>
+                            <select class="form-control">
+                                <option>张三</option>
+                                <option>李四</option>
+                                <option>王五</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer content-center">
+                <button type="button" class="btn btn-secondary waves-effect" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary waves-effect waves-light">保存</button>
+            </div>
+        </div>
+    </div>
+</div><!-- /.modal -->
+
+<div id="con-edit-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog model-full">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">回复</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="from-group">
+                            <span>回复内容</span>
+                            <textarea class="form-control" id="field-7" placeholder="请输入您的回复内容" style="height: 180px;"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer content-center">
+                <button type="button" class="btn btn-secondary waves-effect" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary waves-effect waves-light">保存</button>
+            </div>
+        </div>
+    </div>
+</div><!-- /.modal -->
+
+
+    
+
+    <!--Footer-->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center">
+                    Copyright © 深圳烨云信息技术有限公司
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="../../../plugins/moment/moment.js"></script>
+    <script src="../../../plugins/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+    <script src="../../../plugins/bootstrap-daterangepicker/daterangepicker.js"></script>
+
+    <script src="../../../plugins/notifyjs/dist/notify.min.js"></script>
+    <script src="../../../plugins/notifications/notify-metro.js"></script>
+
+
+    <script type="text/javascript">
+
+        jQuery('#date-range').datepicker({
+            toggleActive: true
+        });
+
+        $("#checkAll").click(function () {
+            if ($(this).is(":checked")) {
+                $("[type='checkbox']").attr('checked', true);
+            }
+            else {
+                $("[type='checkbox']").attr('checked', false);
+            }
+        });
+
+
+    </script>
+    <script>
+        var resizefunc = [];
+    </script>
+    <!-- Plugins  -->
+    <script src="../../../assets/js/lib/popper.min.js"></script><!-- Popper for Bootstrap -->
+    <script src="../../../assets/js/lib/bootstrap.min.js"></script>
+    <script src="../../../assets/js/lib/detect.js"></script>
+    <script src="../../../assets/js/lib/fastclick.js"></script>
+    <script src="../../../assets/js/lib/jquery.slimscroll.js"></script>
+    <script src="../../../assets/js/lib/jquery.blockUI.js"></script>
+    <script src="../../../assets/js/lib/waves.js"></script>
+    <script src="../../../assets/js/lib/wow.min.js"></script>
+    <script src="../../../assets/js/lib/jquery.nicescroll.js"></script>
+    <script src="../../../assets/js/lib/jquery.scrollTo.min.js"></script>
+    <script src="../../../plugins/switchery/switchery.min.js"></script>
+
+    <!-- Date  -->
+    <script src="../../../plugins/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+    <script src="../../../plugins/bootstrap-daterangepicker/daterangepicker.js"></script>
+
+    <!-- Counter Up  -->
+    <script src="../../../plugins/waypoints/lib/jquery.waypoints.min.js"></script>
+    <script src="../../../plugins/counterup/jquery.counterup.min.js"></script>
+
+    <!-- Custom main Js -->
+    <script src="../../../assets/js/lib/jquery.core.js"></script>
+    <script src="../../../assets/js/lib/jquery.app.js"></script>
+
+    <!--引入bootstrap-table-->
+    <script src="../../../plugins/bootstrap-table/bootstrap-table.js"></script>
+    <script src="../../../plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+    <!--引入自身的js文件-->
+    <script src="../../../assets/js/whiteList/whiteListAddSuccess.js"></script>
+
+    <script type="text/javascript">
+        jQuery(document).ready(function ($) {
+            $('.counter').counterUp({
+                delay: 100,
+                time: 1200
+            });
+        });
+    </script>
+
+
+</body>
+</html>
