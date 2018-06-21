@@ -1,0 +1,45 @@
+
+/**查询列表输入框样式**/
+.search-section{
+	background: #fff;
+	background-clip: padding-box;
+	padding: 10px;
+	border: 1px solid rgba(54, 64, 74, 0.08);
+	border-radius: 5px;
+	margin-bottom: 20px;
+}
+
+/**表格内容**/
+.content{
+	background: #fff;
+	background-clip: padding-box;
+	border: 1px solid rgba(54, 64, 74, 0.08);
+	border-radius: 5px;
+	margin-bottom: 20px;
+}
+
+
+/**流程**/
+.section{
+	padding: 10px;
+	margin-top:20px;
+	background: #fff;
+	background-clip: padding-box;
+	border: 1px solid rgba(54, 64, 74, 0.08);
+	border-radius: 5px;
+}
+.section>.header{
+    width: 80%;
+    margin: 0 auto;
+}
+.section>.body{
+	margin-top: 100px;
+}
+.section>.body label span{
+	color: #f00;
+}
+
+/**添加成功页面表格中的修改按钮**/
+.edit{
+	margin-right:4px;
+}
