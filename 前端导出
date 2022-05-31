@@ -1,0 +1,151 @@
+import { getSheets, downloadExcel } from 'just-xlsx-export'
+
+const time = this.getCurrentTime();
+          const headerProp=[
+          {
+            prop: 'ID',
+            label: '序号'
+          },
+          {
+            prop:'userName',
+            label:'人员姓名',
+          },
+          {
+            prop:'cityName',
+            label:'所属市公司',
+          },
+          {
+            prop:'countyName',
+            label:'所属县公司',
+          },
+          {
+            prop:'groupName',
+            label:'所属班组',
+          },
+          {
+            prop:'jhjxscore',
+            label:'计划检修积分',
+          },
+          {
+            prop:'zdtsscore',
+            label:'终端调试',
+          },
+          {
+            prop:'xcsyscore',
+            label:'现场试验',
+          },
+          {
+            prop:'xmxqgbscore',
+            label:'项目需求编制',
+          },
+          {
+            prop:'ysscore',
+            label:'验收',
+          },
+          {
+            prop:'xcjdscore',
+            label:'现场监督',
+          },
+          {
+            prop:'aqjcscore',
+            label:'安全稽查',
+          },
+          {
+            prop:'zyqkcscore',
+            label:'作业前查勘',
+          },{
+            prop:'ykckscore',
+            label:'业扩查勘',
+          },{
+            prop:'phckscore',
+            label:'配合查勘',
+          },{
+            prop:'jxxqscore',
+            label:'检修消缺',
+          },{
+            prop:'totalOrder',
+            label:'工单总数',
+          },{
+            prop:'totalScore',
+            label:'总积分',
+          },
+        ]
+          let colCopy = JSON.parse(JSON.stringify(headerProp));
+          // 先筛选
+          const excelLabel = colCopy.map((item) => item.label);
+          const excelProp = colCopy.map((item) => item.prop);
+          const excelData = [];
+          for (let i = 0; i < this.selectRowData.length; i++) {
+            const tbItem = this.selectRowData[i];
+            const temp = [];
+            for (let j = 0; j < excelProp.length; j++) {
+              const prop = excelProp[j];
+              
+              temp.push(tbItem[prop]);
+            }
+            excelData.push(temp);
+          }
+          excelData.unshift(excelLabel);
+          
+          const exportData = excelData
+          const sheet = getSheets(exportData)
+          // 设置宽度，wpx宽度数值，有多少个单元格设置多少个宽度对象即可
+          sheet['!cols'] = [
+              {
+                  wpx: 80,
+              },
+              {
+                  wpx: 120,
+              },
+              {
+                  wpx: 120,
+              },
+              {
+                  wpx: 120,
+              },
+              {
+                  wpx: 120,
+              },
+              {
+                  wpx: 150,
+              },
+              {
+                  wpx: 150,
+              },
+              {
+                  wpx: 150,
+              },
+              {
+                  wpx: 120,
+              },
+              {
+                  wpx: 120,
+              },
+              {
+                  wpx: 120,
+              },
+              {
+                  wpx: 120,
+              },
+              {
+                  wpx: 150,
+              },
+              {
+                  wpx: 150,
+              },
+              {
+                  wpx: 120,
+              },
+              {
+                  wpx: 120,
+              },
+              {
+                  wpx: 120,
+              },
+              {
+                  wpx: 120,
+              }
+          ];
+
+          downloadExcel(sheet,  `人员积分统计报表_${time}`)
+    }
