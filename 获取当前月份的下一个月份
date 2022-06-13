@@ -1,0 +1,16 @@
+getPreMonth(date) {
+      const arr = date.split('-');
+      const year = arr[0]; //获取当前日期的年份
+      const month = arr[1]; //获取当前日期的月份
+      let nextYear = year;
+      var nextM = parseInt(month) - 1;
+      if (nextM == 0) {
+          nextYear = parseInt(nextYear) - 1;
+          nextM = 12;
+      }
+      if (nextM < 10) {
+          nextM = '0' + nextM;
+      }
+      const nextMonth = nextYear + '-' + nextM;
+      return nextMonth;
+    },
