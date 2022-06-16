@@ -1,0 +1,10 @@
+listenerScroll() {
+      let tableDom = this.$refs.dataTable.bodyWrapper;
+      let sumDom = this.$refs.sumTable.bodyWrapper;
+      tableDom.addEventListener("scroll", () => {
+        sumDom.scrollLeft = tableDom.scrollLeft;
+      });
+      sumDom.addEventListener("scroll", () => {
+        tableDom.scrollLeft = sumDom.scrollLeft;
+      })
+    },
