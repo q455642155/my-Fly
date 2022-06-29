@@ -1,0 +1,96 @@
+
+// 定义一个tab滚动的事件指令
+Vue.directive('loadTableMore', {
+  bind(el, binding) {
+    const selectWrap = el.querySelector('.el-table__body-wrapper')
+    selectWrap.addEventListener('scroll', function() {
+      let sign = 0;
+      const scrollHeight = selectWrap.scrollHeight;
+      const scrollTop = selectWrap.scrollTop;
+      const windowHeight  = selectWrap.clientHeight;
+      const scrollDistance = scrollHeight - scrollTop - windowHeight
+      if (scrollDistance <= sign) {
+        binding.value()
+      }
+    })
+  }
+})
+
+/* 隐患录入表格-查询 */
+    checkHiddenTable(params = {}) {
+      this.hiddenLoading = true;
+      this.hiddenTable = [];
+      const param = {
+        towerRunId: this.form.defTowetrName || "",
+        orderId: this.problemObj.orderId,
+        orderCode: this.problemObj.orderCode,
+        // isFixed: this.form.hidEliminatedType || "",
+        createStatus: this.problemObj.isEdit ? 0 : 1,
+      };
+      hiddenEntryQuery(param)
+        .then((res) => {
+          this.hiddenLoading = false;
+          if (!res?.data?.length) {
+            this.hiddenTable = [];
+            return;
+          }
+          let data = res?.data || [];
+          if (data.length > 5) {
+            this.hiddenDataTotal = data;
+            data = data.slice(0, 5);//存放请求的前5条数据，以便初次渲染
+          }
+          data.forEach((item) => {
+            if (item?.fixImgUrls) {
+              item.fixImgUrls = decodeURI(item.fixImgUrls);
+              item.imgInfo = [
+                {
+                  name: item.fixImgUrls.slice(
+                    item.fixImgUrls.lastIndexOf("/") + 1
+                  ),
+                  url: this.imgDomain + item.fixImgUrls.slice(
+                    item.fixImgUrls.lastIndexOf("/") + 1
+                  ),
+                },
+              ];
+              item.showBtn = false;
+            } else {
+              item.imgInfo = [];
+              item.showBtn = true;
+            }
+          });
+          this.hiddenTable = data;
+        })
+        .catch((err) => {
+          this.hiddenLoading = false;
+          this.hiddenTable = [];
+          err && this.$message.error(err);
+        });
+    },
+    loadHiddenMore() {
+      var tableNum = this.hiddenTable.length;
+      let a = this.hiddenDataTotal.slice(tableNum, tableNum + 5);
+      a.map(item => {
+        if (item?.fixImgUrls) {
+          item.fixImgUrls = decodeURI(item.fixImgUrls);
+          item.imgInfo = [
+            {
+              name: item.fixImgUrls.slice(
+                item.fixImgUrls.lastIndexOf("/") + 1
+              ),
+              url: this.imgDomain + item.fixImgUrls.slice(
+                item.fixImgUrls.lastIndexOf("/") + 1
+              ),
+            },
+          ];
+          item.showBtn = false;
+        } else {
+          item.imgInfo = [];
+          item.showBtn = true;
+        }
+       //3.再push到要渲染到页面的tableData变量中去
+        this.hiddenTable.push(item);
+      });
+      if(a.length===0){
+        this.$message.warning('已经到底啦')
+      }
+    },
