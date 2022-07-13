@@ -1,0 +1,46 @@
+<template>
+<div class="log-content">
+  <p v-for="(item, index) in logInfo" :key="index">
+    <el-tooltip
+      effect="dark"
+      :content="item"
+      :disabled="isShow"
+      placement="top"
+    >
+      <div class="log-item" @mouseover="isShowTooltip(index)">
+        <span ref="contentRef">{{ (index + 1) + '.' }} {{ item }}</span>
+      </div>
+    </el-tooltip>
+  </p>
+</div>
+</template>
+
+<script>
+export default{
+  data() {
+    return {
+      isShow: false
+    }
+  },
+  methods: {
+    isShowTooltip(idx) {
+      this.$nextTick(() => {
+        if(this.$refs.contentRef[idx].parentNode.offsetWidth > this.$refs.contentRef[idx].offsetWidth) {
+          this.isShow = true;
+        } else {
+          this.isShow = false;
+        }
+      })
+    }
+  }
+}
+</script>
+
+<style>
+ .log-item {
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        line-height: 24px;
+      }
+</style>
