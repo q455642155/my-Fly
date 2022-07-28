@@ -1,0 +1,155 @@
+Vue.directive("loadSelectMore", {
+  bind(el, binding) {
+    const selectWrap = el.querySelector(".el-select-dropdown .el-select-dropdown__wrap");
+    selectWrap.addEventListener("scroll", function () {
+      const scrollHeight = selectWrap.scrollHeight;
+      const scrollTop = selectWrap.scrollTop;
+      const windowHeight = selectWrap.clientHeight;
+      const scrollDistance = scrollHeight - scrollTop;
+      if (scrollDistance <= windowHeight) {
+        binding.value();
+      }
+    });
+  },
+});
+// 方法
+loadData() {
+      let options = [
+        {
+          value: "1",
+          label: "黄金糕",
+        },
+        {
+          value: "2",
+          label: "双皮奶",
+        },
+        {
+          value: "3",
+          label: "蚵仔煎",
+        },
+        {
+          value: "4",
+          label: "龙须面",
+        },
+        {
+          value: "5",
+          label: "北京烤鸭",
+        },
+        {
+          value: "6",
+          label: "黄金糕11",
+        },
+        {
+          value: "7",
+          label: "双皮奶11",
+        },
+        {
+          value: "8",
+          label: "蚵仔煎11",
+        },
+        {
+          value: "9",
+          label: "龙须面11",
+        },
+        {
+          value: "10",
+          label: "北京烤鸭11",
+        },
+        {
+          value: "11",
+          label: "黄金糕22",
+        },
+        {
+          value: "12",
+          label: "双皮奶22",
+        },
+        {
+          value: "13",
+          label: "蚵仔煎22",
+        },
+        {
+          value: "14",
+          label: "龙须面22",
+        },
+        {
+          value: "15",
+          label: "北京烤鸭22",
+        },
+        {
+          value: "16",
+          label: "黄金糕33",
+        },
+        {
+          value: "17",
+          label: "双皮奶33",
+        },
+        {
+          value: "18",
+          label: "蚵仔煎33",
+        },
+        {
+          value: "19",
+          label: "龙须面33",
+        },
+        {
+          value: "20",
+          label: "北京烤鸭33",
+        },
+        {
+          value: "21",
+          label: "黄金糕44",
+        },
+        {
+          value: "22",
+          label: "双皮奶44",
+        },
+        {
+          value: "23",
+          label: "蚵仔煎44",
+        },
+        {
+          value: "24",
+          label: "龙须面44",
+        },
+        {
+          value: "25",
+          label: "北京烤鸭44",
+        },
+        {
+          value: "26",
+          label: "黄金糕55",
+        },
+        {
+          value: "27",
+          label: "双皮奶55",
+        },
+        {
+          value: "28",
+          label: "蚵仔煎55",
+        },
+        {
+          value: "29",
+          label: "龙须面55",
+        },
+        {
+          value: "30",
+          label: "北京烤鸭55",
+        },
+      ];
+      if (options.length > 10) {
+        this.optionsTotal = options;
+        options = options.slice(0, 10);
+      }
+      this.optionsShow = options;
+    },
+    // 加载更多
+    loadMore() {
+      var tableNum = this.optionsShow.length;
+      let a = this.optionsTotal.slice(tableNum, tableNum + 10);
+      a.map((item) => {
+        this.optionsShow.push(item);
+      });
+      if( a.length === 0 ){
+        // this.$message.warning('已经到底啦')
+      }
+    },
