@@ -1,0 +1,50 @@
+<div class="home">
+  <el-table
+      ref="somTable"
+      :data="tableData"
+      border
+      height="300"
+      :summary-method="getSummaries"
+      show-summary
+      style="width: 100%; margin-top: 20px"
+    >
+      <el-table-column prop="id" label="ID" width="180"> </el-table-column>
+      <el-table-column prop="name" label="姓名"> </el-table-column>
+      <el-table-column prop="amount1" label="数值 1（元）"> </el-table-column>
+      <el-table-column prop="amount2" label="数值 2（元）"> </el-table-column>
+      <el-table-column prop="amount3" label="数值 3（元）"> </el-table-column>
+      <el-table-column prop="amount1" label="数值 1（元）"> </el-table-column>
+      <el-table-column prop="amount2" label="数值 2（元）"> </el-table-column>
+      <el-table-column prop="amount3" label="数值 3（元）"> </el-table-column>
+      <el-table-column prop="amount1" label="数值 1（元）"> </el-table-column>
+      <el-table-column prop="amount2" label="数值 2（元）"> </el-table-column>
+      <el-table-column prop="amount3" label="数值 3（元）"> </el-table-column>
+      <el-table-column prop="amount1" label="数值 1（元）"> </el-table-column>
+      <el-table-column prop="amount2" label="数值 2（元）"> </el-table-column>
+      <el-table-column prop="amount3" label="数值 3（元）"> </el-table-column>
+      <el-table-column prop="amount1" label="数值 1（元）"> </el-table-column>
+      <el-table-column prop="amount2" label="数值 2（元）"> </el-table-column>
+      <el-table-column prop="amount3" label="数值 3（元）"> </el-table-column>
+      <el-table-column prop="amount1" label="数值 1（元）"> </el-table-column>
+      <el-table-column prop="amount2" label="数值 2（元）"> </el-table-column>
+      <el-table-column prop="amount3" label="数值 4（元）"> </el-table-column>
+    </el-table>
+</div>
+// 方法
+mounted() {
+  const a = this.$refs.somTable.$refs.footerWrapper;
+  a.addEventListener("scroll", () => {
+    const left = a.scrollLeft;
+    this.$refs.somTable.$refs.bodyWrapper.scrollLeft = left;
+  });
+},
+
+// 样式注意不能写在scoped里面
+.el-table--scrollable-x .el-table__body-wrapper {
+  overflow-x: hidden !important;
+  z-index: 2 !important;
+}
+.el-table__footer-wrapper {
+  overflow-x: auto;
+  border-top: 1px solid #f4f4f4;
+}
